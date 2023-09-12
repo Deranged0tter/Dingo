@@ -49,3 +49,17 @@ class dingo(AgentType):
 
     def generate(self, config: dict) -> None:
         self.builder_send_message(config['ClientID'], "Info", f"test")
+
+def main():
+    Havoc_Dingo = dingo()
+    Havoc_Service = HavocService(
+        endpoint="wss://localhost:40056/service-endpoint"
+        password="service-password"
+    )
+
+    Havoc_Service.register_agent(Havoc_Dingo)
+
+    return
+
+if __name__ == "__main__":
+    main()

@@ -53,7 +53,7 @@ class dingo(AgentType):
 def main():
     Havoc_Dingo = dingo()
     Havoc_Service = HavocService(
-        endpoint="wss://localhost:40056/service-endpoint"
+        endpoint="wss://localhost:40056/service-endpoint",
         password="service-password"
     )
 

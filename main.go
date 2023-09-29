@@ -1,11 +1,21 @@
 package main
 
 import (
+	"strconv"
+
 	hg "github.com/deranged0tter/hellsgopher"
 )
 
-const (
-	SLEEP = 10
+// variables changed at compile time
+var (
+	sSLEEP  = "10"
+	sJITTER = "5"
+)
+
+// sleep and jitter converted from string to int
+var (
+	SLEEP, _  = strconv.Atoi(sSLEEP)
+	JITTER, _ = strconv.Atoi(sJITTER)
 )
 
 var (

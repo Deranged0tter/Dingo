@@ -30,12 +30,12 @@ class dingo(AgentType):
 
     Formats = [
         {
-            "Name": "linux binary",
-            "Extension": "",
-        },
-        {
             "Name": "windows executable",
             "Extension": "exe",
+        },
+        {
+            "Name": "linux elf",
+            "Extension": "elf",
         },
     ]
 
@@ -48,7 +48,8 @@ class dingo(AgentType):
     ]
 
     def generate(self, config: dict) -> None:
-        self.builder_send_message(config['ClientID'], "Info", f"test")
+        self.builder_send_message( config[ 'ClientID' ], "Info", f"Options Config: {config['Options']}" )
+        self.builder_send_message( config[ 'ClientID' ], "Info", f"Agent Config: {config['Config']}" )
 
 def main():
     Havoc_Dingo = dingo()

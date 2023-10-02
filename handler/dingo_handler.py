@@ -30,17 +30,22 @@ class dingo(AgentType):
 
     Formats = [
         {
-            "Name": "windows executable",
+            "Name": "Windows Executable",
             "Extension": "exe",
         },
         {
-            "Name": "linux elf",
-            "Extension": "elf",
+            "Name": "Windows Dynamic Library",
+            "Extension": "dll",
+        },
+        {
+            "Name": "Linux Binary (elf)",
+            "Extension": "",
         },
     ]
 
     BuildingConfig = {
-        "Sleep": "10"
+        "Sleep": "10",
+        "Jitter": "5",
     }
 
     Commands = [
@@ -48,7 +53,6 @@ class dingo(AgentType):
     ]
 
     def generate(self, config: dict) -> None:
-        self.builder_send_message( config[ 'ClientID' ], "Info", f"Options Config: {config['Options']}" )
         self.builder_send_message( config[ 'ClientID' ], "Info", f"Agent Config: {config['Config']}" )
 
 def main():

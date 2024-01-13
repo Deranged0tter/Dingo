@@ -83,10 +83,10 @@ class dingo(AgentType):
         jitter = config['Config']['Jitter']
         format = config['Options']['Format']
         arch = config['Options']['Arch']
-        host = config['Options']['Hosts'][0]
-        port = config['Options']['PortBind']
-        uris = config['Options']['Uris'][0]
-        userAgent = config['Options']['UserAgent']
+        host = config['Options']['Listener']['Hosts'][0]
+        port = config['Options']['Listener']['PortBind']
+        uris = config['Options']['Listener']['Uris'][0]
+        userAgent = config['Options']['Listener']['UserAgent']
         
         # generate name for agent
         name = random.choice(adjs) + "_" + random.choice(nouns)

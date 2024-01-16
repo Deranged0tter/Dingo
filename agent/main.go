@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	hg "dingo/hellsgopher"
 	"strconv"
 )
 
@@ -14,9 +14,12 @@ var (
 	RPORT     string = "80"                  // port to callback to
 	USERAGENT string = "bingoc2/1.0.0"       // useragent of callback
 	URI       string = "index.php"           // uri to callback to
-	AgentID   string = "abcd"                // ID of agent (used by server to identify who is calling)
+	AgentID   string = hg.GenerateAgentID(4) // ID of agent (used by server to identify who is calling)
+	MAGIC            = []byte{0x64, 0x69, 0x6E, 0x67}
 )
 
 func main() {
-	fmt.Printf("SLEEP: %d\nJITTER: %d\nRHOST: %s\nRPORT: %s\nUSERAGENT: %s\nURI: %s\nAGENT ID: %s", SLEEP, JITTER, RHOST, RPORT, USERAGENT, URI, AgentID)
+	// register agent with teamserver
+
+	// callback to teamserver
 }

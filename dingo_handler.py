@@ -120,8 +120,8 @@ class dingo(AgentType):
         self.builder_send_payload(config["ClientID"], name, data)
     
     def response(self, response: dict) -> bytes:
-        agentHeader = response[ "AgentHeader" ]
-        agentResponse = response[ "Response" ]
+        agentHeader = response["AgentHeader"]
+        agentResponse = response["Response"]
         
         print("received response from agent (%s)\n---\nResponse:\n%s", agentHeader, agentResponse)
         

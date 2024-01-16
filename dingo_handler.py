@@ -111,7 +111,8 @@ class dingo(AgentType):
             goarch = "i386"
         
         # build agent
-        os.system(f"make -C ../agent/ SLEEP={sleep} JITTER={jitter} RHOST={host} RPORT={port} USERAGENT={userAgent} URI={uris} BIN_NAME={name} cGOOS={goos} cGOARCH={goarch} isDLL={isDLL} OUT_PATH=../bin/")
+        self.builder_send_message(f"make -C ./agent/ SLEEP={sleep} JITTER={jitter} RHOST={host} RPORT={port} USERAGENT={userAgent} URI={uris} BIN_NAME={name} cGOOS={goos} cGOARCH={goarch} isDLL={isDLL} OUT_PATH=./bin/")
+        os.system(f"make -C ./agent/ SLEEP={sleep} JITTER={jitter} RHOST={host} RPORT={port} USERAGENT={userAgent} URI={uris} BIN_NAME={name} cGOOS={goos} cGOARCH={goarch} isDLL={isDLL} OUT_PATH=./bin/")
         
         data = open(f"../bin/{name}", "rb").read()
         

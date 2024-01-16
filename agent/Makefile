@@ -1,5 +1,5 @@
 BIN_NAME=dingo.exe
-OUT_PATH=../bin/
+OUT_PATH=./bin/
 isDLL=false
 
 
